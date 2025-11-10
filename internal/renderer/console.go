@@ -4,16 +4,20 @@ import (
 	"fmt"
 	"os"
 	"path/filepath"
+	"time"
 
 	"tree/internal/config"
 	"tree/internal/logger"
-	"tree/internal/tree"
+	_metrics "tree/internal/metrics"
+	_type "tree/internal/types"
+	"tree/internal/ui"
 
 	"github.com/fatih/color"
+	"golang.org/x/term"
 )
 
 // PrintTree выводит структуру директории в консоль
-func PrintTree(entries []tree.Entry, cfg *config.Config) {
+func PrintTree(entries []_type.Entry, cfg *config.Config) {
 	logger.Debugf("Rendering tree with %d entries", len(entries))
 
 	if len(entries) == 0 {
@@ -46,7 +50,7 @@ func PrintTree(entries []tree.Entry, cfg *config.Config) {
 }
 
 // printEntry выводит один элемент дерева с отступами
-func printEntry(entry tree.Entry, isLast bool, width int, maxDepth int) {
+func printEntry(entry _type.Entry, isLast bool, width int, maxDepth int) {
 	// Формируем префикс для отступов
 	prefix := ""
 	if entry.Depth > 0 {
@@ -96,13 +100,14 @@ func printEntry(entry tree.Entry, isLast bool, width int, maxDepth int) {
 		entry.Path, entry.Depth, entry.Info.Size())
 }
 
-// Вспомогательные функции
 func termSize() (int, int, error) {
-	width, height, err := defaultTermSize()
-	if err != nil || width == 0 {
-		return 80, 24, nil // Значения по умолчанию
+	if ui.IsTerminal() {
+		width, height, err := term.GetSize(int(os.Stdout.Fd()))
+		if err == nil && width > 0 {
+			return width, height, nil
+		}
 	}
-	return width, height, err
+	return 80, 24, nil
 }
 
 func defaultTermSize() (int, int, error) {
@@ -134,5 +139,23 @@ func formatSize(bytes int64) string {
 		return fmt.Sprintf("%.1f KB", float64(bytes)/float64(KB))
 	default:
 		return fmt.Sprintf("%d B", bytes)
+	}
+}
+
+// PrintMetrics выводит собранные метрики
+func PrintMetrics(m _metrics.Metrics) {
+	fmt.Println()
+
+	header := color.New(color.FgHiCyan, color.Bold).Sprint("📊 Scan Metrics")
+	fmt.Println(header)
+
+	fmt.Printf("   Files:       %s\n", color.GreenString("%d", m.TotalFiles))
+	fmt.Printf("   Directories: %s\n", color.BlueString("%d", m.TotalDirs))
+	fmt.Printf("   Total Size:  %s\n", color.YellowString("%s", _metrics.FormatSize(m.TotalSize)))
+	fmt.Printf("   Max Depth:   %s\n", color.MagentaString("%d", m.MaxDepth))
+	fmt.Printf("   Duration:    %s\n", color.WhiteString("%s", m.ScanDuration.Truncate(time.Millisecond)))
+
+	if m.FilesPerSecond > 0 {
+		fmt.Printf("   Performance: %s\n", color.CyanString("%.1f files/sec", m.FilesPerSecond))
 	}
 }

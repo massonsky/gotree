@@ -5,7 +5,7 @@ import (
 	"os/exec"
 	"path/filepath"
 	"runtime"
-	"tree/pkg/assets"
+	"tree/assets"
 
 	"gopkg.in/yaml.v3"
 )
@@ -28,7 +28,7 @@ type Config struct {
 // DefaultConfig возвращает конфигурацию по умолчанию
 func DefaultConfig() *Config {
 	return &Config{
-		DefaultFontPath: filepath.Join(GetConfigDir(), "fonts", "LiberationMono-Regular.ttf"),
+		DefaultFontPath: filepath.Join(GetConfigDir(), "fonts", "Roboto-Black.ttf"),
 		LogLevel:        "info",
 		ImageWidth:      1200,
 		ImageHeight:     0, // 0 = автоматический расчет
