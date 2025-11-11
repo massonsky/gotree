@@ -2,7 +2,7 @@
 
 `gotree` — это мощный кроссплатформенный CLI-инструмент для отображения структуры папок с поддержкой **интерактивной навигации**, **гибкого экспорта** и **красивой визуализации** — намного шире возможностей классической утилиты `tree`.
 
-![three demo](https://raw.githubusercontent.com/massonsky/gotree/blob/master/assets/image.png)
+![gotree demo](https://raw.githubusercontent.com/massonsky/gotree/blob/master/assets/image.png)
 ---
 
 ## ✨ Возможности
@@ -22,7 +22,7 @@
 ### Установка
 ```bash
 # Из исходников (требуется Go 1.20+)
-go install github.com/massonsky/three@latest
+ go install github.com/massonsky/gotree/cmd/gotree@latest
 
 # Или скачайте готовый бинарник из раздела Releases
 ```
@@ -30,16 +30,16 @@ go install github.com/massonsky/three@latest
 ### Базовое использование
 ```bash
 # Отобразить дерево текущей директории
-three
+gotree
 
 # Интерактивный режим
-three interactive .
+gotree interactive .
 
 # Экспорт в разные форматы
-three --export tree.png      # Растровое изображение
-three --export tree.svg      # Векторная графика
-three --export tree.json     # Структурированные данные
-three --export tree.txt      # Простой текст
+gotree --export gotree.png      # Растровое изображение
+gotree --export gotree.svg      # Векторная графика
+gotree --export gotree.json     # Структурированные данные
+gotree --export gotree.txt      # Простой текст
 ```
 
 ---
@@ -48,13 +48,13 @@ three --export tree.txt      # Простой текст
 
 ```bash
 # Сканирование с ограничением глубины и игнорированием шаблонов
-three --depth 3 --ignore "node_modules" --ignore "*.log" .
+gotree --depth 3 --ignore "node_modules" --ignore "*.log" .
 
 # Интерактивный режим с ограничением глубины
-three interactive --depth 5 /путь/к/проекту
+gotree interactive --depth 5 /путь/к/проекту
 
 # Экспорт с пользовательским шрифтом (только для PNG)
-three --export report.png --font /System/Library/Fonts/Menlo.ttc .
+gotree --export report.png --font /System/Library/Fonts/Menlo.ttc .
 ```
 
 ---
@@ -72,11 +72,11 @@ three --export report.png --font /System/Library/Fonts/Menlo.ttc .
 
 ## 🛠️ Конфигурация
 
-`three` автоматически создаёт директорию конфигурации в:
+`gotree` автоматически создаёт директорию конфигурации в:
 
-- **Linux**: `~/.config/.tree`  
-- **macOS**: `~/Library/Application Support/.tree`  
-- **Windows**: `%APPDATA%\.tree`
+- **Linux**: `~/.config/.gotree`  
+- **macOS**: `~/Library/Application Support/.gotree`  
+- **Windows**: `%APPDATA%\.gotree`
 
 Основные файлы и папки:
 - `configuration.yaml` — глобальные настройки  
