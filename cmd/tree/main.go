@@ -10,12 +10,12 @@ import (
 	"strings"
 	"syscall"
 
-	"tree/internal/config"
-	"tree/internal/exporter"
-	"tree/internal/logger"
-	"tree/internal/renderer"
-	"tree/internal/tree"
-	"tree/internal/tui"
+	"github.com/massonsky/tree/internal/config"
+	"github.com/massonsky/tree/internal/exporter"
+	"github.com/massonsky/tree/internal/logger"
+	"github.com/massonsky/tree/internal/renderer"
+	"github.com/massonsky/tree/internal/tree"
+	"github.com/massonsky/tree/internal/tui"
 
 	"github.com/urfave/cli/v2"
 )

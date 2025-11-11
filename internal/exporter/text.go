@@ -5,7 +5,7 @@ import (
 	"io"
 	"path/filepath"
 
-	_types "tree/internal/types"
+	_types "github.com/massonsky/tree/internal/types"
 )
 
 type TextExporter struct{}

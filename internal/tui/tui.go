@@ -6,10 +6,10 @@ import (
 	"os"
 	"path/filepath"
 
-	"tree/internal/config"
-	"tree/internal/tree"
+	"github.com/massonsky/tree/internal/config"
+	"github.com/massonsky/tree/internal/tree"
 
-	"tree/internal/types"
+	"github.com/massonsky/tree/internal/types"
 
 	"github.com/charmbracelet/bubbles/list"
 	"github.com/charmbracelet/bubbles/viewport"

@@ -9,7 +9,7 @@ import (
 	"strings"
 	"time"
 
-	"tree/internal/config"
+	"github.com/massonsky/tree/internal/config"
 )
 
 type Logger struct {

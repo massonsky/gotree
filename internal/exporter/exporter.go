@@ -3,12 +3,13 @@ package exporter
 import (
 	"fmt"
 	"io"
-	_types "tree/internal/types"
+
+	"github.com/massonsky/tree/internal/types"
 )
 
 // Exporter интерфейс для всех форматов экспорта
 type Exporter interface {
-	Export(w io.Writer, entries []_types.Entry) error
+	Export(w io.Writer, entries []types.Entry) error
 }
 
 // Format поддерживаемые форматы

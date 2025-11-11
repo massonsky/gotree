@@ -7,7 +7,7 @@ import (
 	"strings"
 	"time"
 
-	_types "tree/internal/types"
+	"github.com/massonsky/tree/internal/types"
 )
 
 type JSONExporter struct{}
@@ -22,7 +22,7 @@ type JSONEntry struct {
 	IsHidden bool      `json:"is_hidden"`
 }
 
-func (e *JSONExporter) Export(w io.Writer, entries []_types.Entry) error {
+func (e *JSONExporter) Export(w io.Writer, entries []types.Entry) error {
 	jsonEntries := make([]JSONEntry, len(entries))
 
 	for i, entry := range entries {

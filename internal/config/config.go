@@ -5,7 +5,8 @@ import (
 	"os/exec"
 	"path/filepath"
 	"runtime"
-	"tree/assets"
+
+	"github.com/massonsky/tree/assets"
 
 	"gopkg.in/yaml.v3"
 )

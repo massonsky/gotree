@@ -1,8 +1,8 @@
 package tree
 
 import (
-	"tree/internal/metrics"
-	_type "tree/internal/types"
+	"github.com/massonsky/tree/internal/metrics"
+	_type "github.com/massonsky/tree/internal/types"
 )
 
 // WalkResult содержит результат обхода директории

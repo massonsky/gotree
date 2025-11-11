@@ -5,8 +5,8 @@ import (
 	"io"
 	"path/filepath"
 
-	"tree/assets"
-	"tree/internal/types"
+	"github.com/massonsky/tree/assets"
+	"github.com/massonsky/tree/internal/types"
 
 	"github.com/fogleman/gg"
 	"github.com/golang/freetype/truetype"

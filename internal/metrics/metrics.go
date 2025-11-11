@@ -3,7 +3,8 @@ package metrics
 import (
 	"fmt"
 	"time"
-	_type "tree/internal/types"
+
+	_type "github.com/massonsky/tree/internal/types"
 )
 
 // Metrics содержит статистику по директории
