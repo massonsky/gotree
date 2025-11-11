@@ -1,4 +1,4 @@
-module github.com/massonsky/tree
+module github.com/massonsky/gotree
 
 go 1.24.5
 

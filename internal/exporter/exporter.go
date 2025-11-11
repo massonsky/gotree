@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"io"
 
-	"github.com/massonsky/tree/internal/types"
+	"github.com/massonsky/gotree/internal/types"
 )
 
 // Exporter интерфейс для всех форматов экспорта

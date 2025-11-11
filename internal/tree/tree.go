@@ -8,11 +8,11 @@ import (
 	"strings"
 	"time"
 
-	"github.com/massonsky/tree/internal/config"
-	"github.com/massonsky/tree/internal/logger"
-	"github.com/massonsky/tree/internal/metrics"
-	"github.com/massonsky/tree/internal/types"
-	"github.com/massonsky/tree/internal/ui"
+	"github.com/massonsky/gotree/internal/config"
+	"github.com/massonsky/gotree/internal/logger"
+	"github.com/massonsky/gotree/internal/metrics"
+	"github.com/massonsky/gotree/internal/types"
+	"github.com/massonsky/gotree/internal/ui"
 
 	"github.com/gobwas/glob"
 	"github.com/schollz/progressbar/v3"

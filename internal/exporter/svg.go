@@ -6,7 +6,7 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/massonsky/tree/internal/types"
+	"github.com/massonsky/gotree/internal/types"
 
 	svg "github.com/ajstarks/svgo"
 )

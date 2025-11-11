@@ -7,11 +7,11 @@ import (
 	"path/filepath"
 	"time"
 
-	"github.com/massonsky/tree/internal/config"
-	"github.com/massonsky/tree/internal/logger"
-	_metrics "github.com/massonsky/tree/internal/metrics"
-	_type "github.com/massonsky/tree/internal/types"
-	"github.com/massonsky/tree/internal/ui"
+	"github.com/massonsky/gotree/internal/config"
+	"github.com/massonsky/gotree/internal/logger"
+	_metrics "github.com/massonsky/gotree/internal/metrics"
+	_type "github.com/massonsky/gotree/internal/types"
+	"github.com/massonsky/gotree/internal/ui"
 
 	"github.com/fatih/color"
 	"golang.org/x/term"

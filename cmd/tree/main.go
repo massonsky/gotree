@@ -10,12 +10,12 @@ import (
 	"strings"
 	"syscall"
 
-	"github.com/massonsky/tree/internal/config"
-	"github.com/massonsky/tree/internal/exporter"
-	"github.com/massonsky/tree/internal/logger"
-	"github.com/massonsky/tree/internal/renderer"
-	"github.com/massonsky/tree/internal/tree"
-	"github.com/massonsky/tree/internal/tui"
+	"github.com/massonsky/gotree/internal/config"
+	"github.com/massonsky/gotree/internal/exporter"
+	"github.com/massonsky/gotree/internal/logger"
+	"github.com/massonsky/gotree/internal/renderer"
+	"github.com/massonsky/gotree/internal/tree"
+	"github.com/massonsky/gotree/internal/tui"
 
 	"github.com/urfave/cli/v2"
 )

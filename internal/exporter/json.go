@@ -7,7 +7,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/massonsky/tree/internal/types"
+	"github.com/massonsky/gotree/internal/types"
 )
 
 type JSONExporter struct{}

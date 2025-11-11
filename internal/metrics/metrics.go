@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"time"
 
-	_type "github.com/massonsky/tree/internal/types"
+	_type "github.com/massonsky/gotree/internal/types"
 )
 
 // Metrics содержит статистику по директории
