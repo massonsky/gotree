@@ -172,20 +172,10 @@ func main() {
 			Aliases: []string{"I"},
 			Usage:   "Ignore paths matching pattern (can be used multiple times)",
 		},
-		&cli.StringFlag{
-			Name:  "color",
-			Usage: "Colorize output: auto, always, never",
-			Value: "auto",
-		},
-		&cli.StringFlag{
-			Name:  "template",
-			Usage: "Template name for export (default: default)",
-			Value: "default",
-		},
 	}
 
 	app := &cli.App{
-		Name:  "three",
+		Name:  "gotree",
 		Usage: "📁 Advanced directory tree visualizer",
 		Flags: commonFlags,
 		Action: func(c *cli.Context) error {
