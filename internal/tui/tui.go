@@ -114,13 +114,18 @@ func NewModel(ctx context.Context, cfg *config.Config, rootPath string) (Model, 
 	l.Styles.Title = lipgloss.NewStyle().Bold(true).Foreground(lipgloss.Color("63")).MarginLeft(2)
 	l.Styles.FilterPrompt = lipgloss.NewStyle().Foreground(lipgloss.Color("241"))
 	l.Styles.FilterCursor = lipgloss.NewStyle().Foreground(lipgloss.Color("205"))
-	// Получаем размер терминала
+	// Viewport для просмотра файлов. Создаём его сначала, затем попытаемся
+	// инициализировать размер из текущего терминала. Основной источник правды
+	// — события tea.WindowSizeMsg, которые придут в Update при запуске Bubble Tea.
+	vp := viewport.New(80, 20)
+
+	// Попытаемся установить начальный размер списка из текущего терминала.
 	width, height, _ := term.GetSize(os.Stdout.Fd())
 	if width > 0 && height > 0 {
 		l.SetSize(width, height-5) // -5 для заголовка и статус-бара
+		vp.Width = width
+		vp.Height = height - 5
 	}
-	// Viewport для просмотра файлов
-	vp := viewport.New(80, 20)
 
 	return Model{
 		ctx:      ctx,
@@ -188,6 +193,19 @@ func (m Model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 				}
 			}
 		}
+
+	case tea.WindowSizeMsg:
+		// подстраиваем размеры list и viewport при изменении размера окна
+		ws := msg
+		w := int(ws.Width)
+		h := int(ws.Height)
+		if w > 0 && h > 0 {
+			m.list.SetSize(w, h-5)
+			m.viewport.Width = w
+			if h-5 > 0 {
+				m.viewport.Height = h - 5
+			}
+		}
 	}
 
 	if !m.showFileView {
@@ -209,7 +227,7 @@ func (m Model) View() string {
 
 	if m.showFileView {
 		return lipgloss.JoinVertical(lipgloss.Top,
-			lipgloss.NewStyle().Padding(1).Render("📄 File Viewer (ESC to go back)"),
+			lipgloss.NewStyle().Padding(1).Render("📄 File Viewer (Enter to go back)"),
 			m.viewport.View(),
 		)
 	}
